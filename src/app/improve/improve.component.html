@@ -1,0 +1,5 @@
+<div *ngIf="breweries$ | async as breweries">
+  <div><b>Better Approach using ASYNC</b></div>
+  <br />
+  <div *ngFor="let b of breweries">{{ b.name }}</div>
+</div>
