@@ -1,1 +1,6 @@
-/* Add application styles & imports to this file! */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

@@ -1,0 +1,27 @@
+<div class="center">
+  <div>
+    <h4>Select a Type - Example 5 (filter list)</h4>
+
+    <select class="form-control" [formControl]="typeChoices">
+      <option>micro</option>
+      <option>large</option>
+    </select>
+
+    <br />
+    <h4>Select a Brewery</h4>
+    <select class="form-control" [formControl]="brewChoices">
+      <option *ngFor="let brew of breweries">
+        {{ brew.name }} - {{ brew.brewery_type }}
+      </option>
+    </select>
+    <br />
+    <p>
+      * You selected brewery type:
+      <b>{{ typeSelection$ | async }} </b>
+    </p>
+    <p>
+      * You selected brewery:
+      <b>{{ brewChoices.valueChanges | async }}</b>
+    </p>
+  </div>
+</div>

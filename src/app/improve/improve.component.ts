@@ -11,7 +11,8 @@ import {
   Subscription,
   tap,
 } from 'rxjs';
-import { BreweryInterface, DataService } from './data.service';
+import { BreweryInterface } from '../brewery.interface';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-improve',

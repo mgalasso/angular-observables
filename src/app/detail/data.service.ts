@@ -3,12 +3,9 @@
 import { HttpClient } from '@angular/common/http';
 import { map, mergeMap, Observable, ObservedValueOf, Subject, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { BreweryInterface } from '../brewery.interface';
 
-export interface BreweryInterface {
-  id: string;
-  name: string;
-  brewert_type: string;
-}
+
 @Injectable()
 export class DataService {
   ///madtree-brewing-cincinnati

@@ -1,0 +1,25 @@
+<div class="center">
+  <div>
+    <h4>Select a Type - Example 3 (rxjs operators)</h4>
+
+    <select class="form-control" [formControl]="typeChoices">
+      <option>micro</option>
+      <option>large</option>
+    </select>
+
+    <br />
+    <h4>Select a Brewery</h4>
+    <select class="form-control" [formControl]="brewChoices">
+      <option *ngFor="let option of breweries">{{ option.name }}</option>
+    </select>
+    <br />
+    <p>
+      * You selected brewery type:
+      <b>{{ typeChoices.valueChanges | async }} </b>
+    </p>
+    <p>
+      * You selected brewery:
+      <b>{{ brewChoices.valueChanges | async }}</b>
+    </p>
+  </div>
+</div>
