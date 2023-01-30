@@ -1,1 +1,14 @@
 <router-outlet></router-outlet>
+<!-- <app-template-swap></app-template-swap> -->
+<app-template-swap [incomingContent]="myContent"></app-template-swap>
+<ng-template #myContent let-state>
+  <div
+    style="color: green; border: 1px solid gray; padding: 5px; text-align: center; box-shadow: 5px 5px #888888; width: 50%; border-radius: 5px"
+  >
+    <h4>Parent Custom Content</h4>
+    <h4>
+      <label style="color: blue">£ {{ state?.name }} £</label>
+    </h4>
+    <h4>Make Your Own Design</h4>
+  </div>
+</ng-template>

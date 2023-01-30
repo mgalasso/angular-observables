@@ -1,0 +1,13 @@
+<h3>Template-Swap Component</h3>
+
+<div>
+  <!-- <ng-container #reference></ng-container> -->
+  <ng-container
+    [ngTemplateOutlet]="incomingContent || defaultContent"
+    [ngTemplateOutletContext]="{ $implicit: state }"
+  ></ng-container>
+  <ng-template #defaultContent>
+    <h4>Default Content</h4>
+    <h4>Default Data: ({{ state?.name }})</h4>
+  </ng-template>
+</div>

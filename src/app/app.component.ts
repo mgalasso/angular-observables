@@ -1,13 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TemplateSwapComponent } from './template-swap/template-swap.component';
 
 @Component({
   selector: 'my-app',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
-  providers: [],
+  imports: [CommonModule, RouterOutlet, TemplateSwapComponent],
   templateUrl: './app.component.html',
   styleUrls: [],
 })
-export class AppComponent {}
+export class AppComponent {
+
+}
