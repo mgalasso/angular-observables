@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BeginComponent } from './begin/begin.component';
-import { DetailComponent } from './detail/detail.component';
+
 import { ImproveComponent } from './improve/improve.component';
 import { SelectFiveComponent } from './select/select-five/select-five.component';
 import { SelectFourComponent } from './select/select-four/select-four.component';
@@ -11,10 +11,9 @@ import { SelectTwoComponent } from './select/select-two/select-two.component';
 import { TemplateSwapComponent } from './template-swap/template-swap.component';
 
 export const routes: Routes = [
-  { path: '', component: SelectFiveComponent },
+  { path: '', component: ImproveComponent },
   { path: 'begin', component: BeginComponent },
   { path: 'improve', component: ImproveComponent },
-  { path: 'detail', component: DetailComponent },
   { path: 'selectone', component: SelectOneComponent },
   { path: 'selecttwo', component: SelectTwoComponent },
   { path: 'selectthree', component: SelectThreeComponent },

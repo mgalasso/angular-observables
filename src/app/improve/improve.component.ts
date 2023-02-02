@@ -6,6 +6,7 @@ import {
   exhaustMap,
   map,
   mergeMap,
+  switchMap,
   Observable,
   Subject,
   Subscription,
@@ -25,9 +26,29 @@ import { DataService } from './data.service';
 export class ImproveComponent {
   breweries$!: Observable<BreweryInterface[]>;
 
-  constructor(private ds: DataService) {
+  constructor(private ds: DataService, private http: HttpClient) {
     this.breweries$ = this.ds.breweries$;
   }
 
-  ngOnInit(): void {}
+  // detail record - use action streams NO data service
+  private brewerySelectSubject = new Subject<string>();
+  brewerySelectedAction$ = this.brewerySelectSubject.asObservable();
+
+  selectedBrewery(b: BreweryInterface): void {
+    this.brewerySelectSubject.next(b.id);
+  }
+
+  private breweriesUrl = 'https://api.openbrewerydb.org/breweries';
+  selectedBrewery$ = this.brewerySelectedAction$.pipe(
+    switchMap((id) =>
+      this.http.get<BreweryInterface>(`${this.breweriesUrl}/${id}`)
+    )
+  );
+
+  // detail record - use action streams with DATA SERVICE
+
+  selectedBreweryDS(b: BreweryInterface): void {
+    this.ds.brewerySelectSubject.next(b.id);
+  }
+  selectedBreweryDS$ = this.ds.selectedBreweryDS$;
 }

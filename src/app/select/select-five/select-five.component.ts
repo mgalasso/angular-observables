@@ -48,3 +48,11 @@ export class SelectFiveComponent {
     );
   }
 }
+
+/* NOTES
+
+<div *ngIf='users$ | async as users'>
+<select (change)='onSelected($any($event.target).value)'>
+<option *ngFor='let user of users' [value]=user.id>{{user.name}}</option>
+
+*/

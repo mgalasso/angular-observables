@@ -31,6 +31,7 @@ export class BeginComponent {
   ngOnInit(): void {
     this.sub$ = this.ds
       .getBreweries()
-      .subscribe((data) => (this.breweries = data));
+      .subscribe((data) => (this.breweries = data))
+      
   }
 }
