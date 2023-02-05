@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BreweryInterface } from '../../brewery.interface';
+import { BreweryInterface } from '../brewery.interface';
 
 @Injectable()
-export class DataService {
+export class SelectService {
   private url = 'https://api.openbrewerydb.org/breweries';
   constructor(private http: HttpClient) {}
 

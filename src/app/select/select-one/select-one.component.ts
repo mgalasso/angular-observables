@@ -3,13 +3,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BreweryInterface } from '../../brewery.interface';
-import { DataService } from './data.service';
+import { SelectService } from '../select.service';
 
 @Component({
   selector: 'app-select-one',
   standalone: true,
   imports: [CommonModule, HttpClientModule, FormsModule, ReactiveFormsModule],
-  providers: [DataService],
+  providers: [SelectService],
   templateUrl: './select-one.component.html',
   styleUrls: ['./select-one.component.css'],
 })
@@ -21,7 +21,7 @@ export class SelectOneComponent implements OnInit {
   typeSelection!: string;
   brewerySelection!: string;
 
-  constructor(private ds: DataService) {
+  constructor(private ds: SelectService) {
     this.ds.getBreweries().subscribe((brews) => {
       this.breweries = brews;
     });

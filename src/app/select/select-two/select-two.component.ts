@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BreweryInterface } from '../../brewery.interface';
-import { DataService } from './data.service';
+import { SelectService } from '../select.service';
 
 @Component({
   selector: 'app-select-two',
@@ -11,7 +11,7 @@ import { DataService } from './data.service';
   styleUrls: ['./select-two.component.css'],
   standalone: true,
   imports: [CommonModule, HttpClientModule, FormsModule, ReactiveFormsModule],
-  providers: [DataService],
+  providers: [SelectService],
 })
 export class SelectTwoComponent {
   breweries!: Array<BreweryInterface>;
@@ -19,7 +19,7 @@ export class SelectTwoComponent {
   typeChoices = new FormControl();
   brewChoices = new FormControl();
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: SelectService) {
     this.dataService.getBreweries().subscribe((brews) => {
       this.breweries = brews;
     });

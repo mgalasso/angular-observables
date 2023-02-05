@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { map, Observable, withLatestFrom, tap } from 'rxjs';
 import { BreweryInterface } from '../../brewery.interface';
-import { DataService } from './data.service';
+import { SelectService } from '../select.service';
 
 @Component({
   selector: 'app-select-five',
@@ -12,7 +12,7 @@ import { DataService } from './data.service';
   styleUrls: ['./select-five.component.css'],
   standalone: true,
   imports: [CommonModule, HttpClientModule, FormsModule, ReactiveFormsModule],
-  providers: [DataService],
+  providers: [SelectService],
 })
 export class SelectFiveComponent {
   breweries$!: Observable<BreweryInterface[]>;
@@ -22,7 +22,7 @@ export class SelectFiveComponent {
 
   typeSelection$!: Observable<string>;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: SelectService) {
     this.breweries$ = this.dataService.getBreweries();
 
     // map example
