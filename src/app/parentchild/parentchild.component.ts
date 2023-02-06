@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ParentchildComponent implements OnInit {
   wafers$: Observable<WaferInterface[]>;
-  waferSuppliers$: Observable<{ id: number; name: string; waferId: number }[]>;
+  waferSuppliers$: Observable<SupplierInterface[]>;
   selectedWafer$ = this.ds.selectedWafer$;
 
   constructor(private ds: ParentchildService) {

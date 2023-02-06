@@ -30,9 +30,9 @@ export class ParentchildService {
   ];
 
   suppliers = [
-    { id: 0, name: 'supplier 1', waferId: 1 },
-    { id: 1, name: 'supplier 2', waferId: 1 },
-    { id: 2, name: 'supplier 3', waferId: 1 },
+    { id: 0, name: 'supplier 1 of wafer 2', waferId: 1 },
+    { id: 1, name: 'supplier 2 of wafer 2', waferId: 1 },
+    { id: 2, name: 'supplier 3 of wafer 2', waferId: 1 },
   ];
 
   wafers$ = of(this.wafers);
