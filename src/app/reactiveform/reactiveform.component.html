@@ -8,7 +8,14 @@
         formControlName="firstName"
         class="form-control"
       />
+
+      <div *ngIf="myform.controls.firstName.touched">
+        <div *ngIf="myform.controls.firstName.errors.required" class="warning">
+          First Name is required
+        </div>
+      </div>
     </div>
+
     <div>
       <label for="lastName">Last Name:</label>
       <input
@@ -17,7 +24,14 @@
         formControlName="lastName"
         class="form-control"
       />
+
+      <div *ngIf="myform.controls.lastName.touched">
+        <div *ngIf="myform.controls.lastName.errors.required" class="warning">
+          Last Name is required
+        </div>
+      </div>
     </div>
+
     <div>
       <label for="email">Email:</label>
       <input
@@ -26,10 +40,8 @@
         formControlName="email"
         class="form-control"
       />
-      <div
-        *ngIf="myform.get('email').invalid && myform.get('email').touched"
-        class="warning"
-      >
+
+      <div *ngIf="myform.get('email').touched" class="warning">
         <!-- can reach the email property by using "get" or "controls" -->
         <div *ngIf="myform.get('email').errors.required">Email is required</div>
         <div *ngIf="myform.controls.email.errors.pattern">
@@ -37,6 +49,7 @@
         </div>
       </div>
     </div>
+
     <button class="btn btn-primary" type="submit">Submit</button>
   </form>
 </div>

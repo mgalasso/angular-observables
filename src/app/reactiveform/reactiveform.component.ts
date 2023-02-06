@@ -25,8 +25,14 @@ export class ReactiveformComponent implements OnInit {
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
     });
   }
+  //  "Validators.email" will only check for @ : use a regex pattern instead
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.myform.patchValue({
+      firstName: 'Joe',
+      lastName: 'Smith',
+    });
+  }
 
   submit() {
     console.log(this.myform.value);
