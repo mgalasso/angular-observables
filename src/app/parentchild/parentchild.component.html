@@ -10,8 +10,10 @@
     </table>
   </div>
 
+  <br />
+
   <div *ngIf="waferSuppliers$ | async as suppliers">
-    <h3>Wafers</h3>
+    <h3>Suppliers</h3>
     <table class="table table-hover table-bordered">
       <tr *ngFor="let s of suppliers">
         {{
