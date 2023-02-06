@@ -10,9 +10,15 @@ import {
   switchMap,
   throwError,
 } from 'rxjs';
-export interface wafer {
+export interface WaferInterface {
   id: number;
   name: string;
+}
+
+export interface SupplierInterface {
+  id: number;
+  name: string;
+  waferId: number;
 }
 
 @Injectable()
@@ -20,7 +26,7 @@ export class ParentchildService {
   wafers = [
     { id: 0, name: 'wafer 1' },
     { id: 1, name: 'wafer 2' },
-    { id: 2, name: 'wafer 2' },
+    { id: 2, name: 'wafer 3' },
   ];
 
   suppliers = [
@@ -32,7 +38,7 @@ export class ParentchildService {
   wafers$ = of(this.wafers);
   suppliers$ = of(this.suppliers);
 
-  private waferSelectedSubject = new Subject<number>();
+  waferSelectedSubject = new Subject<number>();
   waferSelectedAction$ = this.waferSelectedSubject.asObservable();
 
   // shape on action pattern - non parent child - just an example of combine latest operator
@@ -57,7 +63,7 @@ export class ParentchildService {
   waferSuppliers$ = this.selectedWafer$.pipe(
     switchMap((w) =>
       this.suppliers$
-        .pipe(map((s) => s.find((s) => (s.waferId = w.id)))) // `${this.url}/${s.waferId}`
+        .pipe(map((s) => s.filter((s) => (s.waferId = w.id)))) // `${this.url}/${s.waferId}`
         .pipe(catchError(this.handleError))
     )
   );

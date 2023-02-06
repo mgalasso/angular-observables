@@ -1,18 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { ParentchildService, wafer } from './parentchild.service';
+import {
+  ParentchildService,
+  SupplierInterface,
+  WaferInterface,
+} from './parentchild.service';
 import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-parentchild',
   templateUrl: './parentchild.component.html',
   styleUrls: ['./parentchild.component.css'],
   standalone: true,
   providers: [ParentchildService],
+  imports: [CommonModule],
 })
 export class ParentchildComponent implements OnInit {
-  wafers$: Observable<wafer[]>;
+  wafers$: Observable<WaferInterface[]>;
+  waferSuppliers$: Observable<{ id: number; name: string; waferId: number }[]>;
+  selectedWafer$ = this.ds.selectedWafer$;
+
   constructor(private ds: ParentchildService) {
     this.wafers$ = this.ds.wafers$;
+    this.waferSuppliers$ = this.ds.waferSuppliers$;
   }
 
   ngOnInit() {}
+
+  selectedWafer(w: WaferInterface): void {
+    console.log('selected', w);
+    this.ds.waferSelectedSubject.next(w.id);
+  }
 }

@@ -1,0 +1,23 @@
+<div class="center">
+  <div *ngIf="wafers$ | async as wafers">
+    <h3>Wafers</h3>
+    <table class="table table-hover table-bordered">
+      <tr *ngFor="let w of wafers" (click)="selectedWafer(w)">
+        {{
+          w.name
+        }}
+      </tr>
+    </table>
+  </div>
+
+  <div *ngIf="waferSuppliers$ | async as suppliers">
+    <h3>Wafers</h3>
+    <table class="table table-hover table-bordered">
+      <tr *ngFor="let s of suppliers">
+        {{
+          s.name
+        }}
+      </tr>
+    </table>
+  </div>
+</div>
