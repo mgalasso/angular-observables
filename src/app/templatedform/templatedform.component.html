@@ -1,32 +1,52 @@
 <div class="center">
   <form #myform="ngForm" (ngSubmit)="submit(myform)">
-    <label for="firstname">First Name:</label>
-    <input
-      class="form-control"
-      type="text"
-      name="firstname"
-      [(ngModel)]="detail.firstname"
-      required
-    />
+    <div>
+      <label for="firstname">First Name:</label>
+      <input
+        class="form-control"
+        type="text"
+        name="firstname"
+        [(ngModel)]="detail.firstname"
+        required
+      />
+    </div>
 
-    <label for="lastname">Last Name:</label>
-    <input
-      class="form-control"
-      type="text"
-      name="lastname"
-      [(ngModel)]="detail.lastname"
-      required
-    />
+    <div>
+      <label for="lastname">Last Name:</label>
+      <input
+        class="form-control"
+        type="text"
+        name="lastname"
+        [(ngModel)]="detail.lastname"
+        required
+      />
+    </div>
 
-    <label for="lastname">Email:</label>
-    <input
-      class="form-control"
-      type="text"
-      name="email"
-      [(ngModel)]="detail.email"
-      required
-      email
-    />
+    <div>
+      <!-- email attribute only checks for @ -->
+      <label for="lastname">Email:</label>
+      <input
+        class="form-control"
+        type="text"
+        name="email"
+        [(ngModel)]="detail.email"
+        required
+        [pattern]="emailPattern"
+      />
+      <div
+        *ngIf="myform.touched && myform.controls.email.errors.required"
+        class="warning"
+      >
+        required
+      </div>
+      <div
+        *ngIf="myform.touched && myform.controls.email.errors.pattern"
+        class="warning"
+      >
+        invalid pattern
+      </div>
+    </div>
+    <!-- use pattern instead to enforce both @ and .com etc -->
 
     <button class="btn btn-primary" type="submit">Submit</button>
   </form>
