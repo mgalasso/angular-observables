@@ -14,5 +14,6 @@ export class TemplatedformComponent {
   detail = { firstname: 'Joe', lastname: 'Smith', email: '' };
   submit(form) {
     console.log('submit', form.value);
+    console.log('valid', form.valid);
   }
 }

@@ -6,6 +6,26 @@
       type="text"
       name="firstname"
       [(ngModel)]="detail.firstname"
+      required
+    />
+
+    <label for="lastname">Last Name:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="lastname"
+      [(ngModel)]="detail.lastname"
+      required
+    />
+
+    <label for="lastname">Email:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="email"
+      [(ngModel)]="detail.email"
+      required
+      email
     />
 
     <button class="btn btn-primary" type="submit">Submit</button>
