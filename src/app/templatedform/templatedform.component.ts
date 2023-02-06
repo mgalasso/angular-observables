@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -9,8 +9,10 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
 })
-export class TemplatedformComponent implements OnInit {
+export class TemplatedformComponent {
   constructor() {}
-
-  ngOnInit() {}
+  detail = { firstname: 'Joe', lastname: 'Smith', email: '' };
+  submit(form) {
+    console.log('submit');
+  }
 }
