@@ -10,9 +10,10 @@ import { SelectThreeComponent } from './select/select-three/select-three.compone
 import { SelectTwoComponent } from './select/select-two/select-two.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { TemplateSwapComponent } from './template-swap/template-swap.component';
+import { TemplatedformComponent } from './templatedform/templatedform.component';
 
 export const routes: Routes = [
-  { path: '', component: SelectFiveComponent },
+  { path: '', component: TemplatedformComponent },
   { path: 'subs', component: SubscriptionComponent },
   { path: 'async', component: AsyncComponent },
   { path: 'selectone', component: SelectOneComponent },
@@ -23,6 +24,7 @@ export const routes: Routes = [
   { path: 'swap', component: TemplateSwapComponent },
   { path: 'sand', component: SandboxComponent },
   { path: 'rxform', component: ReactiveformComponent },
+  { path: 'rxform', component: TemplatedformComponent },
 ];
 
 @NgModule({
