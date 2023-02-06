@@ -1,5 +1,13 @@
 <div class="center">
   <form #myform="ngForm" (ngSubmit)="submit(myform)">
+    <label for="firstname">First Name:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="firstname"
+      [(ngModel)]="detail.firstname"
+    />
+
     <button class="btn btn-primary" type="submit">Submit</button>
   </form>
 </div>

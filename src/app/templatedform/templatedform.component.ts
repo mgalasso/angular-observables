@@ -13,6 +13,6 @@ export class TemplatedformComponent {
   constructor() {}
   detail = { firstname: 'Joe', lastname: 'Smith', email: '' };
   submit(form) {
-    console.log('submit');
+    console.log('submit', form.value);
   }
 }
