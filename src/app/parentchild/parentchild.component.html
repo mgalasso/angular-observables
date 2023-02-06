@@ -1,4 +1,4 @@
-<div class="center">
+<div class="padding">
   <div *ngIf="wafers$ | async as wafers">
     <h3>Wafers</h3>
     <table class="table table-hover table-bordered">
@@ -13,13 +13,15 @@
   <br />
 
   <div *ngIf="waferSuppliers$ | async as suppliers">
-    <h3>Suppliers</h3>
-    <table class="table table-hover table-bordered">
-      <tr *ngFor="let s of suppliers">
-        {{
-          s.name
-        }}
-      </tr>
-    </table>
+    <div *ngIf="suppliers.length">
+      <h3>Suppliers</h3>
+      <table class="table table-hover table-bordered">
+        <tr *ngFor="let s of suppliers">
+          {{
+            s.name
+          }}
+        </tr>
+      </table>
+    </div>
   </div>
 </div>

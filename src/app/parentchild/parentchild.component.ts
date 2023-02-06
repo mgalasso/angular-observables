@@ -28,6 +28,6 @@ export class ParentchildComponent implements OnInit {
 
   selectedWafer(w: WaferInterface): void {
     console.log('selected', w);
-    this.ds.waferSelectedSubject.next(w.id);
+    this.ds.waferSelectedSubject.next(w.wid);
   }
 }

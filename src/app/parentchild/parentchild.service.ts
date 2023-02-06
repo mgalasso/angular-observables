@@ -11,12 +11,12 @@ import {
   throwError,
 } from 'rxjs';
 export interface WaferInterface {
-  id: number;
+  wid: number;
   name: string;
 }
 
 export interface SupplierInterface {
-  id: number;
+  sid: number;
   name: string;
   waferId: number;
 }
@@ -24,15 +24,15 @@ export interface SupplierInterface {
 @Injectable()
 export class ParentchildService {
   wafers = [
-    { id: 0, name: 'wafer 1' },
-    { id: 1, name: 'wafer 2' },
-    { id: 2, name: 'wafer 3' },
+    { wid: 0, name: 'wafer 1' },
+    { wid: 1, name: 'wafer 2' },
+    { wid: 2, name: 'wafer 3' },
   ];
 
   suppliers = [
-    { id: 0, name: 'supplier 1 of wafer 2', waferId: 1 },
-    { id: 1, name: 'supplier 2 of wafer 2', waferId: 1 },
-    { id: 2, name: 'supplier 3 of wafer 2', waferId: 1 },
+    { sid: 0, name: 'supplier 1 of wafer 2', waferId: 1 },
+    { sid: 1, name: 'supplier 2 of wafer 2', waferId: 1 },
+    { sid: 2, name: 'supplier 3 of wafer 2', waferId: 1 },
   ];
 
   wafers$ = of(this.wafers);
@@ -53,9 +53,9 @@ export class ParentchildService {
 
   // retrieve related data pattern
   selectedWafer$ = this.waferSelectedAction$.pipe(
-    switchMap((id) =>
+    switchMap((wid) =>
       this.wafers$
-        .pipe(map((w) => w.find((w) => w.id === id))) // w => this.http.get<wafer>(`${this.url}/${id})
+        .pipe(map((w) => w.find((w) => w.wid === wid))) // w => this.http.get<wafer>(`${this.url}/${id})
         .pipe(catchError(this.handleError))
     )
   );
@@ -63,7 +63,7 @@ export class ParentchildService {
   waferSuppliers$ = this.selectedWafer$.pipe(
     switchMap((w) =>
       this.suppliers$
-        .pipe(map((s) => s.filter((s) => (s.waferId = w.id)))) // `${this.url}/${s.waferId}`
+        .pipe(map((s) => s.filter((s) => (s.waferId = w.wid)))) // `${this.url}/${s.waferId}`
         .pipe(catchError(this.handleError))
     )
   );
