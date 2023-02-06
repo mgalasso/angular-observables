@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AsyncComponent } from './async/async.component';
+import { ParentchildComponent } from './parentchild/parentchild.component';
 import { ReactiveformComponent } from './reactiveform/reactiveform.component';
 import { SandboxComponent } from './sandbox/sandbox.component';
 import { SelectFiveComponent } from './select/select-five/select-five.component';
@@ -13,7 +14,7 @@ import { TemplateSwapComponent } from './template-swap/template-swap.component';
 import { TemplatedformComponent } from './templatedform/templatedform.component';
 
 export const routes: Routes = [
-  { path: '', component: TemplatedformComponent },
+  { path: '', component: ParentchildComponent },
   { path: 'subs', component: SubscriptionComponent },
   { path: 'async', component: AsyncComponent },
   { path: 'selectone', component: SelectOneComponent },
@@ -25,6 +26,7 @@ export const routes: Routes = [
   { path: 'sand', component: SandboxComponent },
   { path: 'rxform', component: ReactiveformComponent },
   { path: 'rxform', component: TemplatedformComponent },
+  { path: 'pc', component: ParentchildComponent },
 ];
 
 @NgModule({

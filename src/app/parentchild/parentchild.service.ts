@@ -35,7 +35,7 @@ export class ParentchildService {
   private waferSelectedSubject = new Subject<number>();
   waferSelectedAction$ = this.waferSelectedSubject.asObservable();
 
-  // shape on action pattern
+  // shape on action pattern - non parent child - just an example of combine latest operator
   // selectedWafer$ = combineLatest([
   //   this.wafers$,
   //   this.waferSelectedAction$,
@@ -50,6 +50,14 @@ export class ParentchildService {
     switchMap((id) =>
       this.wafers$
         .pipe(map((w) => w.find((w) => w.id === id))) // w => this.http.get<wafer>(`${this.url}/${id})
+        .pipe(catchError(this.handleError))
+    )
+  );
+
+  waferSuppliers$ = this.selectedWafer$.pipe(
+    switchMap((w) =>
+      this.suppliers$
+        .pipe(map((s) => s.find((s) => (s.waferId = w.id)))) // `${this.url}/${s.waferId}`
         .pipe(catchError(this.handleError))
     )
   );
