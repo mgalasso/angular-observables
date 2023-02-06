@@ -35,9 +35,6 @@ export class ReactiveformComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.myform.value);
-    console.log('submit', this.myform.value);
-    console.log('valid', this.myform.valid);
-    console.log('myform', this.myform);
+    console.log('submit', this.myform, this.myform.value, this.myform.valid);
   }
 }

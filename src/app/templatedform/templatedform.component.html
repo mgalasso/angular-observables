@@ -1,30 +1,46 @@
 <div class="center">
   <form #myform="ngForm" (ngSubmit)="submit(myform)">
     <div>
-      <label for="firstname">First Name:</label>
+      <label for="firstName">First Name:</label>
       <input
         class="form-control"
         type="text"
-        name="firstname"
-        [(ngModel)]="detail.firstname"
+        name="firstName"
+        [(ngModel)]="detail.firstName"
         required
       />
+
+      <div
+        *ngIf="myform.touched && myform.controls.firstName.errors?.required"
+        class="warning"
+      >
+        required
+      </div>
     </div>
 
     <div>
-      <label for="lastname">Last Name:</label>
+      <label for="lastName">Last Name:</label>
       <input
         class="form-control"
         type="text"
-        name="lastname"
-        [(ngModel)]="detail.lastname"
+        name="lastName"
+        [(ngModel)]="detail.lastName"
         required
       />
+
+      <div
+        *ngIf="myform.touched && myform.controls.lastName.errors?.required"
+        class="warning"
+      >
+        required
+      </div>
     </div>
 
     <div>
       <!-- email attribute only checks for @ -->
-      <label for="lastname">Email:</label>
+      <!-- use pattern instead to enforce both @ and .com etc -->
+
+      <label for="email">Email:</label>
       <input
         class="form-control"
         type="text"
@@ -34,19 +50,18 @@
         [pattern]="emailPattern"
       />
       <div
-        *ngIf="myform.touched && myform.controls.email.errors.required"
+        *ngIf="myform.touched && myform.controls.email.errors?.required"
         class="warning"
       >
         required
       </div>
       <div
-        *ngIf="myform.touched && myform.controls.email.errors.pattern"
+        *ngIf="myform.touched && myform.controls.email.errors?.pattern"
         class="warning"
       >
         invalid pattern
       </div>
     </div>
-    <!-- use pattern instead to enforce both @ and .com etc -->
 
     <button class="btn btn-primary" type="submit">Submit</button>
   </form>

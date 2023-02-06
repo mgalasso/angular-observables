@@ -13,7 +13,7 @@ import { TemplateSwapComponent } from './template-swap/template-swap.component';
 import { TemplatedformComponent } from './templatedform/templatedform.component';
 
 export const routes: Routes = [
-  { path: '', component: ReactiveformComponent },
+  { path: '', component: TemplatedformComponent },
   { path: 'subs', component: SubscriptionComponent },
   { path: 'async', component: AsyncComponent },
   { path: 'selectone', component: SelectOneComponent },

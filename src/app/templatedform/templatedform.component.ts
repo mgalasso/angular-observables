@@ -11,11 +11,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class TemplatedformComponent {
   constructor() {}
-  detail = { firstname: 'Joe', lastname: 'Smith', email: '' };
+  detail = { firstName: 'Joe', lastName: 'Smith', email: '' };
   emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   submit(form) {
-    console.log('submit', form.value);
-    console.log('valid', form.valid);
-    console.log('myform', form);
+    console.log('submit', form, form.value, form.valid);
   }
 }
