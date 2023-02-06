@@ -1,5 +1,5 @@
 <div class="center">
-  <form [formGroup]="form" (ngSubmit)="submit()">
+  <form [formGroup]="myform" (ngSubmit)="submit()">
     <div>
       <label for="firstName">First Name:</label>
       <input
@@ -27,11 +27,14 @@
         class="form-control"
       />
       <div
-        *ngIf="form.get('email').invalid && form.get('email').touched"
+        *ngIf="myform.get('email').invalid && myform.get('email').touched"
         class="warning"
       >
-        <div *ngIf="form.get('email').errors.required">Email is required</div>
-        <div *ngIf="form.get('email').errors.email">Email is not valid</div>
+        <!-- can reach the email property by using "get" or "controls" -->
+        <div *ngIf="myform.get('email').errors.required">Email is required</div>
+        <div *ngIf="myform.controls.email.errors.pattern">
+          Email is not valid
+        </div>
       </div>
     </div>
     <button class="btn btn-primary" type="submit">Submit</button>

@@ -16,18 +16,22 @@ import {
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
 })
 export class ReactiveformComponent implements OnInit {
-  form: FormGroup;
+  myform: FormGroup;
+  emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
+    this.myform = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
     });
   }
 
   ngOnInit() {}
 
   submit() {
-    console.log(this.form.value);
+    console.log(this.myform.value);
+    console.log('submit', this.myform.value);
+    console.log('valid', this.myform.valid);
+    console.log('myform', this.myform);
   }
 }
