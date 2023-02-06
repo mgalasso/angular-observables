@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" formControlName="firstName" />
+  </div>
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" formControlName="lastName" />
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email" />
+    <div
+      *ngIf="form.get('email').invalid && form.get('email').touched"
+      class="warning"
+    >
+      <div *ngIf="form.get('email').errors.required">Email is required</div>
+      <div *ngIf="form.get('email').errors.email">Email is not valid</div>
+    </div>
+  </div>
+  <button type="submit">Submit</button>
+</form>
