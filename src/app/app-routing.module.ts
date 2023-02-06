@@ -12,7 +12,7 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 import { TemplateSwapComponent } from './template-swap/template-swap.component';
 
 export const routes: Routes = [
-  { path: '', component: ReactiveformComponent },
+  { path: '', component: SelectFiveComponent },
   { path: 'subs', component: SubscriptionComponent },
   { path: 'async', component: AsyncComponent },
   { path: 'selectone', component: SelectOneComponent },
