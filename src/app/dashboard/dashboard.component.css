@@ -5,3 +5,9 @@ nav {
   row-gap: 5px;
   margin-top: 5px
 }
+
+button{
+  width: 150px;
+  height: 50%;
+  align-self: flex-end;
+}

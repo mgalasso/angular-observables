@@ -6,6 +6,7 @@ import {
 } from './parentchild.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-parentchild',
   templateUrl: './parentchild.component.html',

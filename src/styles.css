@@ -1,17 +1,23 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
-.center {
+/* .center {
   display: flex;
   justify-content: center;
   width: 100%;
   margin-top: 5px;
   margin-left: 50px;
-}
+} */
 
 form {
   display: flex;
   justify-content: center;
   column-gap: 5px;
+}
+
+button{
+  width: 100px;
+  height: 50%;
+  align-self: flex-end;
 }
 
 .warning {

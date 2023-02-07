@@ -1,12 +1,16 @@
 <div class="padding">
   <div *ngIf="wafers$ | async as wafers">
-    <h3>Wafers</h3>
     <table class="table table-hover table-bordered">
-      <tr *ngFor="let w of wafers" (click)="selectedWafer(w)">
-        {{
-          w.name
-        }}
-      </tr>
+      <thead>
+        <th>Wafers</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let w of wafers" (click)="selectedWafer(w)">
+          {{
+            w.name
+          }}
+        </tr>
+      </tbody>
     </table>
   </div>
 
@@ -14,13 +18,17 @@
 
   <div *ngIf="waferSuppliers$ | async as suppliers">
     <div *ngIf="suppliers.length">
-      <h3>Suppliers</h3>
       <table class="table table-hover table-bordered">
-        <tr *ngFor="let s of suppliers">
-          {{
-            s.name
-          }}
-        </tr>
+        <thead>
+          <th>Supppliers</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of suppliers">
+            {{
+              s.name
+            }}
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
