@@ -3,7 +3,9 @@
 .center {
   display: flex;
   justify-content: center;
-  height: 100%;
+  width: 100%;
+  margin-top: 5px;
+  margin-left: 50px;
 }
 
 form {
@@ -15,4 +17,3 @@ form {
 .warning {
   color: red;
 }
-

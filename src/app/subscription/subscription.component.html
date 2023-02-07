@@ -1,11 +1,13 @@
-<div *ngIf="breweries">
-  <div><b>Not the Best Approach</b></div>
-  <br />
-  <table class="table table-hover table-bordered">
-    <tr *ngFor="let b of breweries">
-      {{
-        b.name
-      }}
-    </tr>
-  </table>
+<div class="center">
+  <div *ngIf="breweries">
+    <div><b>Not the Best Approach</b></div>
+    <br />
+    <table class="table table-hover table-bordered">
+      <tr *ngFor="let b of breweries">
+        {{
+          b.name
+        }}
+      </tr>
+    </table>
+  </div>
 </div>

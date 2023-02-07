@@ -1,6 +1,6 @@
 <div class="center">
   <div>
-    <h4>Select a Type - Example 2</h4>
+    <label><b>Select a Type - Example 2</b></label>
 
     <select class="form-control" [formControl]="typeChoices">
       <option>micro</option>
@@ -8,7 +8,7 @@
     </select>
 
     <br />
-    <h4>Select a Brewery</h4>
+    <label><b>Select a Brewery</b></label>
     <select class="form-control" [formControl]="brewChoices">
       <option *ngFor="let option of breweries">{{ option.name }}</option>
     </select>

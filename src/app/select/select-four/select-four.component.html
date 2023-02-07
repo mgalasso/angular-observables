@@ -1,14 +1,13 @@
 <div class="center">
   <div>
-    <h4>Select a Type - Example 4 (rxjs operators async)</h4>
-
+    <label><b>Select a Type - Example 4 (rxjs operators async)</b></label>
     <select class="form-control" [formControl]="typeChoices">
       <option>micro</option>
       <option>large</option>
     </select>
 
     <br />
-    <h4>Select a Brewery</h4>
+    <label><b>Select a Brewery</b></label>
     <select class="form-control" [formControl]="brewChoices">
       <option *ngFor="let brew of breweries">
         {{ brew.name }} - {{ brew.brewery_type }}

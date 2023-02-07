@@ -25,12 +25,12 @@ export const routes: Routes = [
   { path: 'swap', component: TemplateSwapComponent },
   { path: 'sand', component: SandboxComponent },
   { path: 'rxform', component: ReactiveformComponent },
-  { path: 'rxform', component: TemplatedformComponent },
+  { path: 'tmpform', component: TemplatedformComponent },
   { path: 'pc', component: ParentchildComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
