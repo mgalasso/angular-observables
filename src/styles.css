@@ -1,13 +1,5 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
-/* .center {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 5px;
-  margin-left: 50px;
-} */
-
 form {
   display: flex;
   justify-content: center;
