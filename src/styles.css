@@ -14,7 +14,7 @@ form {
   column-gap: 5px;
 }
 
-button{
+button {
   width: 100px;
   height: 50%;
   align-self: flex-end;
@@ -22,4 +22,22 @@ button{
 
 .warning {
   color: red;
+}
+
+/* order matters with anchor state */
+
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: whitesmoke;
+}
+
+a:hover {
+  color: yellow;
+}
+
+a:active {
+  color: orange;
 }
