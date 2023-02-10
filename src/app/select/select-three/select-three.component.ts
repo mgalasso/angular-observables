@@ -33,7 +33,7 @@ export class SelectThreeComponent {
     // this.typeChoices.valueChanges
     //   .pipe(map((type) => type.toUpperCase()))
     //   .subscribe((newValue) => {
-    //     alert(newValue);
+    //     alert(newValue); // now appears UPPER CASE
     //   });
 
     // OR
