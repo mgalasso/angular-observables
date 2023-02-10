@@ -1,5 +1,9 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+* {
+  background-color: black;
+  color: white;
+}
 form {
   display: flex;
   justify-content: center;
@@ -14,6 +18,15 @@ button {
 
 .warning {
   color: red;
+}
+
+.green {
+  color: greenyellow;
+}
+
+tr:hover {
+  background-color: white;
+  color: black;
 }
 
 /* order matters with anchor state */

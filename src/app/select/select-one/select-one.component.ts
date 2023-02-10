@@ -18,6 +18,7 @@ export class SelectOneComponent implements OnInit {
   brewChoices = new FormControl();
   breweries!: Array<BreweryInterface>;
 
+  // old way
   typeSelection!: string;
   brewerySelection!: string;
 

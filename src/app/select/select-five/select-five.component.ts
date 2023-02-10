@@ -25,16 +25,12 @@ export class SelectFiveComponent {
   constructor(private dataService: SelectService) {
     this.breweries$ = this.dataService.getBreweries();
 
-    // map example
-    this.typeChoices.valueChanges
-      .pipe(map((type) => type.toUpperCase()))
-      .subscribe((newValue) => {});
+    // we need to combine type selection with latest list of breweries
+    // notice type is singular and breweries is plural
 
-    // discuss MERGE, FILTER, COMBINELATEST operator
     this.typeSelection$ = this.typeChoices.valueChanges.pipe(
-      withLatestFrom(this.breweries$), // we combine type selection with latest list of breweries
+      withLatestFrom(this.breweries$),
       map(([type, breweries]) => [
-        // now we have an array of two values
         type,
         breweries.filter((b) => b.brewery_type == type),
       ]),

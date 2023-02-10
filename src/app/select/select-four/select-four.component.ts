@@ -20,21 +20,16 @@ export class SelectFourComponent {
   typeChoices = new FormControl();
   brewChoices = new FormControl();
 
-  typeSelection$!: Observable<string>;
+  typeSelection$!: Observable<string>; // now we auto-capture the type selection - no need to subscribe
 
   constructor(private dataService: SelectService) {
     this.dataService.getBreweries().subscribe((brews) => {
       this.breweries = brews;
     });
 
-    // map example
-    this.typeChoices.valueChanges
-      .pipe(map((type) => type.toUpperCase()))
-      .subscribe((newValue) => {
-        alert(newValue);
-      });
+    // tap without subscribing - html now listens to typeSelection$ instead of typeChoices.valueChanges
+    // this leads into example five for filtering the breweries based on type
 
-    // tap without subscribing
     this.typeSelection$ = this.typeChoices.valueChanges.pipe(
       tap((type) => console.log(type))
     );

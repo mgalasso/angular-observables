@@ -11,7 +11,7 @@
       />
 
       <div *ngIf="myform.controls.firstName.touched">
-        <div *ngIf="myform.controls.firstName.errors.required" class="warning">
+        <div *ngIf="myform.controls.firstName.errors?.required" class="warning">
           First Name is required
         </div>
       </div>
@@ -27,7 +27,7 @@
       />
 
       <div *ngIf="myform.controls.lastName.touched">
-        <div *ngIf="myform.controls.lastName.errors.required" class="warning">
+        <div *ngIf="myform.controls.lastName.errors?.required" class="warning">
           Last Name is required
         </div>
       </div>
@@ -44,13 +44,19 @@
 
       <div *ngIf="myform.get('email').touched" class="warning">
         <!-- can reach the email property by using "get" or "controls" -->
-        <div *ngIf="myform.get('email').errors.required">Email is required</div>
-        <div *ngIf="myform.controls.email.errors.pattern">
+        <div *ngIf="myform.get('email').errors?.required" class="warning">
+          Email is required
+        </div>
+        <div *ngIf="myform.controls.email.errors?.pattern" class="warning">
           Email is not valid
         </div>
       </div>
     </div>
-
-    <button class="btn btn-primary" type="submit">Submit</button>
   </form>
+
+  <br />
+
+  <div style="width: 100%; text-align: center">
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </div>
 </div>

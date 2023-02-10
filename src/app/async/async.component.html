@@ -1,10 +1,19 @@
 <div class="container">
+  <label><b>Async: Better Approach</b></label>
   <div *ngIf="breweries$ | async as breweries">
-    <div><b>Async: Better Approach</b></div>
-    <br />
-    <div *ngFor="let b of breweries" (click)="selectedBrewery(b)">
-      {{ b.id }} : {{ b.name }}
-    </div>
+    <table class="table table-hover">
+      <tbody>
+        <tr *ngFor="let b of breweries" (click)="selectedBrewery(b)">
+          {{
+            b.id
+          }}
+          :
+          {{
+            b.name
+          }}
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <br />

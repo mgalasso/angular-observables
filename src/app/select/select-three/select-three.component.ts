@@ -26,18 +26,21 @@ export class SelectThreeComponent {
       this.breweries = brews;
     });
 
-    // same as select-two example but learning about map and tap operators
+    // same as select-two example but learning about map and tap operators below
+    // not needed - just some example of map and subscribing
 
     // map example
-    this.typeChoices.valueChanges
-      .pipe(map((type) => type.toUpperCase()))
-      .subscribe((newValue) => {
-        alert(newValue);
-      });
+    // this.typeChoices.valueChanges
+    //   .pipe(map((type) => type.toUpperCase()))
+    //   .subscribe((newValue) => {
+    //     alert(newValue);
+    //   });
 
-    // tap with subscribing
-    this.typeChoices.valueChanges
-      .pipe(tap((type) => console.log(type)))
-      .subscribe((newValue) => {}); // take away subscribe and ASK if it will show in console
+    // OR
+
+    // tap without subscribing
+    // this.typeChoices.valueChanges
+    //   .pipe(tap((type) => console.log(type)))
+    //   .subscribe((newValue) => {}); // take away subscribe and ASK if it will show in console
   }
 }

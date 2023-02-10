@@ -16,6 +16,7 @@ import { SelectService } from '../select.service';
 export class SelectTwoComponent {
   breweries!: Array<BreweryInterface>;
 
+  // no variables - let html listen directly for value changes
   typeChoices = new FormControl();
   brewChoices = new FormControl();
 
