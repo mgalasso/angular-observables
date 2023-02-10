@@ -43,4 +43,9 @@ export class SelectThreeComponent {
     //   .pipe(tap((type) => console.log(type)))
     //   .subscribe((newValue) => {}); // take away subscribe and ASK if it will show in console
   }
+
+  clear() {
+    this.typeChoices.reset();
+    this.brewChoices.reset();
+  }
 }
