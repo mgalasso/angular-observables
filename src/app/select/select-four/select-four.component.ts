@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { map, Observable, tap } from 'rxjs';
 import { BreweryInterface } from '../../brewery.interface';
 import { SelectService } from '../select.service';
@@ -11,7 +12,13 @@ import { SelectService } from '../select.service';
   templateUrl: './select-four.component.html',
   styleUrls: ['./select-four.component.css'],
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [SelectService],
 })
 export class SelectFourComponent {

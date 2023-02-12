@@ -1,0 +1,16 @@
+<div class="container">
+  <div *ngIf="vehicles$ | async as vehicles">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <th>Vehicles</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let v of vehicles" (click)="selectedClass(v.vehicleClass)">
+          {{
+            v.vehicleClass
+          }}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

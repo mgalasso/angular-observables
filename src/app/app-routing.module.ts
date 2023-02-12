@@ -12,9 +12,10 @@ import { SelectTwoComponent } from './select/select-two/select-two.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { TemplateSwapComponent } from './template-swap/template-swap.component';
 import { TemplatedformComponent } from './templatedform/templatedform.component';
+import { CarsComponent } from './cars/cars.component';
 
 export const routes: Routes = [
-  { path: '', component: ParentchildComponent },
+  { path: '', component: CarsComponent },
   { path: 'subs', component: SubscriptionComponent },
   { path: 'async', component: AsyncComponent },
   { path: 'selectone', component: SelectOneComponent },
@@ -27,6 +28,7 @@ export const routes: Routes = [
   { path: 'rxform', component: ReactiveformComponent },
   { path: 'tmpform', component: TemplatedformComponent },
   { path: 'pc', component: ParentchildComponent },
+  { path: 'cars', component: CarsComponent },
 ];
 
 @NgModule({

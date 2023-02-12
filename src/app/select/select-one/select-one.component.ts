@@ -2,13 +2,20 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { BreweryInterface } from '../../brewery.interface';
 import { SelectService } from '../select.service';
 
 @Component({
   selector: 'app-select-one',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [SelectService],
   templateUrl: './select-one.component.html',
   styleUrls: ['./select-one.component.css'],
