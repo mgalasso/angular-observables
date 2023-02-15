@@ -8,6 +8,8 @@ import {
   Observable,
   pipe,
   async,
+  switchMap,
+  throwError,
 } from 'rxjs';
 import { filter, map, scan, distinct } from 'rxjs/operators';
 import { CarService, VehicleInterface } from './cars.service';
@@ -22,30 +24,50 @@ import { CarService, VehicleInterface } from './cars.service';
 
 // combineLatest = combine latest VALUES
 export class CarsComponent {
-  vehicles$: Observable<VehicleInterface[]>;
-  filteredVehicles$: Observable<VehicleInterface[]>;
+  vehicles$!: Observable<VehicleInterface[]>;
+  makes$: Observable<string[]>;
+
   selectedVehicle$: Observable<VehicleInterface>;
 
-  private vClassSubject = new BehaviorSubject<string>('');
-  vehicleClass$ = this.vClassSubject.asObservable();
+  private makeSubject = new BehaviorSubject<string>('');
+  makeAction$ = this.makeSubject.asObservable();
+
+  // One Simple Approach - filters the cars based on make
+  selectedMake$ = this.makeAction$.pipe(
+    switchMap((make) =>
+      this.vehicles$
+        .pipe(map((v) => v.filter((f) => f.vehicleClass === make)))
+        .pipe(catchError(this.handleError))
+    )
+  );
+
+  filteredVehicles$: Observable<VehicleInterface[]>;
 
   constructor(private ds: CarService) {
+    this.makes$ = this.ds.makes$;
     this.vehicles$ = this.ds.vehicles$;
 
-    // this.filteredVehicles$ = combineLatest([
-    //   this.vehicles$,
-    //   this.vehicleClass$,
-    // ]).pipe(
-    //   map(([vehicles, selectedClass]) =>
-    //     vehicles.filter((v) =>
-    //       selectedClass ? v.vehicleClass.includes(selectedClass) : true
-    //     )
-    //   ),
-    //   catchError((err) => err)
-    // );
+    // another approach to filter the cars based on make but this time using combine latest
+    this.filteredVehicles$ = combineLatest([
+      this.vehicles$,
+      this.makeAction$,
+    ]).pipe(
+      map(([vehicles, selectedMake]) =>
+        vehicles.filter((v) =>
+          selectedMake ? v.vehicleClass.includes(selectedMake) : true
+        )
+      ),
+      catchError((err) => err)
+    ) as Observable<VehicleInterface[]>;
   }
 
-  selectedClass(vechicleClass: string): void {
-    this.vClassSubject.next(vechicleClass);
+  selectedMake(make: string): void {
+    this.makeSubject.next(make);
+  }
+
+  private handleError(err: any): Observable<never> {
+    let errorMessage = `An error occured: ${err.error.message}`;
+    console.error(err);
+    return throwError(() => errorMessage);
   }
 }

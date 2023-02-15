@@ -1,13 +1,49 @@
 <div class="container">
-  <div *ngIf="vehicles$ | async as vehicles">
+  <div *ngIf="makes$ | async as makes">
     <table class="table table-hover table-bordered">
       <thead>
-        <th>Vehicles</th>
+        <th>Make</th>
       </thead>
       <tbody>
-        <tr *ngFor="let v of vehicles" (click)="selectedClass(v.vehicleClass)">
+        <tr *ngFor="let m of makes" (click)="selectedMake(m)">
           {{
-            v.vehicleClass
+            m
+          }}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="selectedMake$ | async as byMake">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <th>By Make using Simple Filter - not in Constuctor</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let m of byMake">
+          {{
+            m.vehicleClass
+          }}
+          {{
+            m.vehicleModel
+          }}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="filteredVehicles$ | async as byMake">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <th>By Make using Combine Latest - In Constructor</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let m of byMake">
+          {{
+            m.vehicleClass
+          }}
+          {{
+            m.vehicleModel
           }}
         </tr>
       </tbody>
