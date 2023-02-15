@@ -24,16 +24,15 @@ import { CarService, VehicleInterface } from './cars.service';
 
 // combineLatest = combine latest VALUES
 export class CarsComponent {
-  vehicles$!: Observable<VehicleInterface[]>;
-  makes$: Observable<string[]>;
+  vehicles$ = this.ds.vehicles$;
+  makes$ = this.ds.makes$;
 
-  selectedVehicle$: Observable<VehicleInterface>;
-
+  // Handle selecting a Make with two statements linked together
   private makeSubject = new BehaviorSubject<string>('');
   makeAction$ = this.makeSubject.asObservable();
 
-  // One Simple Approach - filters the cars based on make
-  selectedMake$ = this.makeAction$.pipe(
+  // Show Models by Make using just a filter
+  filteredByMake$ = this.makeAction$.pipe(
     switchMap((make) =>
       this.vehicles$
         .pipe(map((v) => v.filter((f) => f.vehicleClass === make)))
@@ -41,25 +40,21 @@ export class CarsComponent {
     )
   );
 
-  filteredVehicles$: Observable<VehicleInterface[]>;
+  // Or you can show Models by Make using both combine latest and filter
+  // this way you at least have the full list showing before the user selects a Make
+  filteredUsingCombineLatest$ = combineLatest([
+    this.vehicles$,
+    this.makeAction$,
+  ]).pipe(
+    map(([vehicles, selectedMake]) =>
+      vehicles.filter((v) =>
+        selectedMake ? v.vehicleClass.includes(selectedMake) : true
+      )
+    ),
+    catchError((err) => err)
+  ) as Observable<VehicleInterface[]>;
 
-  constructor(private ds: CarService) {
-    this.makes$ = this.ds.makes$;
-    this.vehicles$ = this.ds.vehicles$;
-
-    // another approach to filter the cars based on make but this time using combine latest
-    this.filteredVehicles$ = combineLatest([
-      this.vehicles$,
-      this.makeAction$,
-    ]).pipe(
-      map(([vehicles, selectedMake]) =>
-        vehicles.filter((v) =>
-          selectedMake ? v.vehicleClass.includes(selectedMake) : true
-        )
-      ),
-      catchError((err) => err)
-    ) as Observable<VehicleInterface[]>;
-  }
+  constructor(private ds: CarService) {}
 
   selectedMake(make: string): void {
     this.makeSubject.next(make);

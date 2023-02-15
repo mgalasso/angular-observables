@@ -14,10 +14,10 @@
     </table>
   </div>
 
-  <div *ngIf="selectedMake$ | async as byMake">
+  <div *ngIf="filteredByMake$ | async as byMake">
     <table class="table table-hover table-bordered">
       <thead>
-        <th>By Make using Simple Filter - not in Constuctor</th>
+        <th>Show Models using Simple Filter - not in Constuctor</th>
       </thead>
       <tbody>
         <tr *ngFor="let m of byMake">
@@ -32,10 +32,10 @@
     </table>
   </div>
 
-  <div *ngIf="filteredVehicles$ | async as byMake">
+  <div *ngIf="filteredUsingCombineLatest$ | async as byMake">
     <table class="table table-hover table-bordered">
       <thead>
-        <th>By Make using Combine Latest - In Constructor</th>
+        <th>Show Models using Combine Latest - In Constructor</th>
       </thead>
       <tbody>
         <tr *ngFor="let m of byMake">
