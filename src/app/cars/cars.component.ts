@@ -52,7 +52,7 @@ export class CarsComponent {
       )
     ),
     catchError((err) => err)
-  ) as Observable<VehicleInterface[]>;
+  ) as Observable<VehicleInterface[]>; // use type assertion when getting an Observable<unknown> error or something similar
 
   constructor(private ds: CarService) {}
 
