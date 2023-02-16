@@ -15,7 +15,7 @@ import { TemplatedformComponent } from './templatedform/templatedform.component'
 import { CarsComponent } from './cars/cars.component';
 
 export const routes: Routes = [
-  { path: '', component: CarsComponent },
+  { path: '', component: SandboxComponent },
   { path: 'subs', component: SubscriptionComponent },
   { path: 'async', component: AsyncComponent },
   { path: 'selectone', component: SelectOneComponent },
