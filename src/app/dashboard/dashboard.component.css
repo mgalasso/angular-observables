@@ -3,11 +3,7 @@ nav {
   justify-content: left;
   flex-direction: column;
   row-gap: 5px;
-  margin-top: 5px
+  margin-top: 5px;
+  width: 150px;
 }
 
-button{
-  width: 150px;
-  height: 50%;
-  align-self: flex-end;
-}
