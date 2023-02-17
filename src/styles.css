@@ -2,12 +2,12 @@
 
 * {
   background-color: black;
-  color: white;
+  color: lightgray;
 }
 
 .container {
   border: 0.5px solid gray;
-padding: 10px;
+  padding: 10px;
 }
 
 form {
@@ -42,13 +42,14 @@ a:link {
 }
 
 a:visited {
-  color: whitesmoke;
+  color: lightgray;
 }
 
 a:hover {
-  color: yellow;
+  color: greenyellow;
 }
 
 a:active {
-  color: orange;
+  color: rgba(172, 255, 47, 0.644);
 }
+

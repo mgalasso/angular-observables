@@ -4,8 +4,7 @@ import {
   Observable,
   Subject,
   switchMap,
-  throwError,
-  map,
+  throwError
 } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { BreweryInterface } from '../brewery.interface';
@@ -19,7 +18,8 @@ export class AsyncService {
     // main list of breweries
     this.breweries$ = this.http
       .get<BreweryInterface[]>(this.breweriesUrl)
-      .pipe(catchError(this.handleError));
+      .pipe(
+        catchError(this.handleError));
   }
 
   // detail record

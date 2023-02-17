@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { switchMap, Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { BreweryInterface } from '../brewery.interface';
 import { AsyncService } from './async.service';
 

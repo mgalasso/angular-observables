@@ -7,3 +7,23 @@ nav {
   width: 150px;
 }
 
+
+/* order matters with anchor state */
+
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: lightgray;
+}
+
+a:hover {
+  color: greenyellow;
+}
+
+a:active {
+  color: rgba(172, 255, 47, 0.644);
+}
+
+

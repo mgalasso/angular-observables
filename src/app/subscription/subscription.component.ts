@@ -11,7 +11,7 @@ import { SubscriptionService } from './subscription.service';
   imports: [CommonModule, HttpClientModule],
   providers: [SubscriptionService],
   templateUrl: './subscription.component.html',
-  styleUrls: [],
+  styleUrls: ['./subscription.component.css'],
 })
 export class SubscriptionComponent implements OnInit, OnDestroy {
   sub$!: Subscription; // one variable to subscribe and unsubscribe
