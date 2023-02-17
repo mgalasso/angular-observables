@@ -1,4 +1,4 @@
-<div class="container">
+<div>
   <label><b>Parent Child</b></label>
   <div *ngIf="wafers$ | async as wafers">
     <table class="table table-hover table-bordered">
@@ -7,9 +7,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let w of wafers" (click)="selectedWafer(w)">
-          {{
-            w.name
-          }}
+          <label> {{ w.name }}</label>
         </tr>
       </tbody>
     </table>
@@ -25,9 +23,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let s of suppliers">
-            {{
-              s.name
-            }}
+            <label>{{ s.name }}</label>
           </tr>
         </tbody>
       </table>
