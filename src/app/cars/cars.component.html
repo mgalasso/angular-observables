@@ -1,4 +1,4 @@
-<div class="container">
+<div>
   <div *ngIf="makes$ | async as makes">
     <table class="table table-hover table-bordered">
       <thead>
@@ -6,14 +6,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let m of makes" (click)="selectedMake(m)">
-          {{
-            m
-          }}
+          <label> {{ m }}</label>
         </tr>
       </tbody>
     </table>
   </div>
-
+  <br />
   <div *ngIf="filteredByMake$ | async as byMake">
     <table class="table table-hover table-bordered">
       <thead>
@@ -21,17 +19,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let m of byMake">
-          {{
-            m.vehicleClass
-          }}
-          {{
-            m.vehicleModel
-          }}
+          <label> {{ m.vehicleClass }} {{ m.vehicleModel }}</label>
         </tr>
       </tbody>
     </table>
   </div>
-
+  <br />
   <div *ngIf="filteredUsingCombineLatest$ | async as byMake">
     <table class="table table-hover table-bordered">
       <thead>
@@ -39,12 +32,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let m of byMake">
-          {{
-            m.vehicleClass
-          }}
-          {{
-            m.vehicleModel
-          }}
+          <label> {{ m.vehicleClass }} {{ m.vehicleModel }}</label>
         </tr>
       </tbody>
     </table>
