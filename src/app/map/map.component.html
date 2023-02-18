@@ -1,0 +1,36 @@
+<div class="container">
+  <div>
+
+    <div *ngIf="types$ | async as types">
+    <label><b>Select a Type</b></label>
+    <select class="form-control" [formControl]="typeChoices">
+      <option *ngFor="let option of types">{{ option }}</option>
+    </select>
+    </div>
+    <br />
+
+    <div *ngIf="breweries$ | async as breweries">
+    <label><b>Select a Brewery</b></label>
+    <select class="form-control" [formControl]="brewChoices">
+      <option *ngFor="let option of breweries">{{ option.name }}</option>
+    </select>
+   </div>
+
+    <br />
+    <p>
+      Brewery Type:
+      <label class="green">{{ typeChoices.valueChanges | async }} </label>
+     
+    </p>
+    <p>
+      Modified:
+      <label class="green">{{ modifiedSelectedType }} </label>
+    </p>
+    <p>
+      Brewery:
+      <label class="green">{{ brewChoices.valueChanges | async }}</label>
+    </p>
+  </div>
+
+  <button class="btn btn-primary" (click)="clear()">clear</button>
+</div>

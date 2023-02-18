@@ -2,8 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable, withLatestFrom, tap } from 'rxjs';
 import { BreweryInterface } from '../../brewery.interface';
 import { SelectService } from '../select.service';
 
@@ -12,33 +11,44 @@ import { SelectService } from '../select.service';
   templateUrl: './select-four.component.html',
   styleUrls: ['./select-four.component.css'],
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+  imports: [CommonModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [SelectService],
 })
 export class SelectFourComponent {
+  breweries$!: Observable<BreweryInterface[]>;
   breweries!: Array<BreweryInterface>;
-
   typeChoices = new FormControl();
   brewChoices = new FormControl();
 
-  typeSelection$!: Observable<string>; // now we auto-capture the type selection - no need to subscribe
+  typeSelection$!: Observable<string>;
 
   constructor(private dataService: SelectService) {
-    this.dataService.getBreweries().subscribe((brews) => {
-      this.breweries = brews;
-    });
+    this.breweries$ = this.dataService.getBreweries();
 
-    // tap without subscribing - html now listens to typeSelection$ instead of typeChoices.valueChanges
-    // this leads into example five for filtering the breweries based on type
+    // we need to combine type selection with latest list of breweries
+    // notice type is singular and breweries is plural
 
     this.typeSelection$ = this.typeChoices.valueChanges.pipe(
-      tap((type) => console.log(type))
+      withLatestFrom(this.breweries$),
+      map(([type, breweries]) => [
+        type,
+        breweries.filter((b) => b.brewery_type == type),
+      ]),
+      tap(([type, filteredBreweries]) => {
+        this.breweries = filteredBreweries;
+        this.brewChoices.setValue(
+          `${filteredBreweries[0].name} - ${filteredBreweries[0].brewery_type}`
+        );
+      }),
+      map(([type]) => type)
     );
   }
 }
+
+/* NOTES
+
+<div *ngIf='users$ | async as users'>
+<select (change)='onSelected($any($event.target).value)'>
+<option *ngFor='let user of users' [value]=user.id>{{user.name}}</option>
+
+*/

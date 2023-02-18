@@ -1,6 +1,7 @@
 <div class="container">
   <div>
-    <label><b>Select a Type - Example 4 - Async</b></label>
+    <label><b>Select a Type - Example 5 - Async - With Latest</b></label>
+
     <select class="form-control" [formControl]="typeChoices">
       <option>micro</option>
       <option>large</option>
@@ -23,8 +24,4 @@
       <label class="green">{{ brewChoices.valueChanges | async }}</label>
     </p>
   </div>
-
-
-  <br />
-  <a routerLink="/selectfive">See Example 5</a>
 </div>

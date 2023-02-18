@@ -3,8 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, Observable, tap } from 'rxjs';
 import { BreweryInterface } from '../../brewery.interface';
 import { SelectService } from '../select.service';
 
@@ -28,30 +27,21 @@ export class SelectThreeComponent {
   typeChoices = new FormControl();
   brewChoices = new FormControl();
 
+  typeSelection$!: Observable<string>; // now we auto-capture the type selection - no need to subscribe
+
   constructor(private dataService: SelectService) {
     this.dataService.getBreweries().subscribe((brews) => {
       this.breweries = brews;
     });
 
-    // same as select-two example but learning about map and tap operators below
-    // not needed - just some example of map and subscribing
+    // tap without subscribing - html now listens to typeSelection$ instead of typeChoices.valueChanges
+    // this leads into example five for filtering the breweries based on type
 
-    // map example
-    // this.typeChoices.valueChanges
-    //   .pipe(map((type) => type.toUpperCase()))
-    //   .subscribe((newValue) => {
-    //     alert(newValue); // now appears UPPER CASE
-    //   });
-
-    // OR
-
-    // tap without subscribing
-    // this.typeChoices.valueChanges
-    //   .pipe(tap((type) => console.log(type)))
-    //   .subscribe((newValue) => {}); // take away subscribe and ASK if it will show in console
+    this.typeSelection$ = this.typeChoices.valueChanges.pipe(
+      tap((type) => console.log(type))
+    );
   }
-
-  clear() {
+  clear(): void {
     this.typeChoices.reset();
     this.brewChoices.reset();
   }

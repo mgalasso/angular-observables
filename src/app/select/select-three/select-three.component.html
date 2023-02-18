@@ -1,6 +1,6 @@
 <div class="container">
   <div>
-    <label><b>Select a Type - Example 3 - Async</b></label>
+    <label><b>Select a Type - Example 4 - Async</b></label>
     <select class="form-control" [formControl]="typeChoices">
       <option>micro</option>
       <option>large</option>
@@ -9,12 +9,14 @@
     <br />
     <label><b>Select a Brewery</b></label>
     <select class="form-control" [formControl]="brewChoices">
-      <option *ngFor="let option of breweries">{{ option.name }}</option>
+      <option *ngFor="let brew of breweries">
+        {{ brew.name }} - {{ brew.brewery_type }}
+      </option>
     </select>
     <br />
     <p>
       Brewery Type:
-      <label class="green">{{ typeChoices.valueChanges | async }} </label>
+      <label class="green">{{ typeSelection$ | async }} </label>
     </p>
     <p>
       Brewery:
@@ -22,9 +24,7 @@
     </p>
   </div>
 
-  <button class="btn btn-primary" (click)="clear()">clear</button>
 
   <br />
-  <br />
-  <a routerLink="/selectfour">See Example 4</a>
+  <a routerLink="/selectfive">See Example 4</a>
 </div>
