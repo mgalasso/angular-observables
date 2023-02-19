@@ -13,13 +13,14 @@ import { TemplatedformComponent } from './templatedform/templatedform.component'
 import { CarsComponent } from './cars/cars.component';
 import { MapComponent } from './map/map.component';
 import { SelectThreeComponent } from './select/select-three/select-three.component';
+import { ZipComponent } from './zip/zip.component';
 
 
 export const routes: Routes = [
   { path: '', component: SandboxComponent },
   { path: 'subs', component: SubscriptionComponent },
   { path: 'async', component: AsyncComponent },
-  { path: 'selectone', component: SelectOneComponent },
+  { path: 'withlatest', component: SelectOneComponent },
   { path: 'selecttwo', component: SelectTwoComponent },
   { path: 'selectthree', component: SelectThreeComponent },
   { path: 'selectfour', component: SelectFourComponent },
@@ -27,9 +28,10 @@ export const routes: Routes = [
   { path: 'swap', component: TemplateSwapComponent },
   { path: 'sand', component: SandboxComponent },
   { path: 'rxform', component: ReactiveformComponent },
-  { path: 'tmpform', component: TemplatedformComponent },
-  { path: 'pc', component: ParentchildComponent },
-  { path: 'cars', component: CarsComponent },
+  { path: 'tempform', component: TemplatedformComponent },
+  { path: 'forkjoin', component: ParentchildComponent },
+  { path: 'combinelatest', component: CarsComponent },
+  { path: 'zip', component: ZipComponent },
 ];
 
 @NgModule({
