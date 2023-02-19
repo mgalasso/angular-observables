@@ -29,4 +29,29 @@
       </table>
     </div>
   </div>
+
+  <div *ngIf="waferSuppliers$ | async as suppliers">
+  <div *ngIf="suppliers.length === 0">
+    <h4>No Suppliers</h4>
+  </div>
+  </div>
+<br/>
+  <div *ngIf="waferWithSuppliers$ | async as waferSuppliers">
+  <div *ngIf="waferSuppliers.length">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <th>Wafers - Supppliers</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let wafer of waferSuppliers">
+          <label>{{ wafer.wafer.name }}</label>
+         <div *ngFor="let sup of wafer.suppliers">
+          {{sup.name}}
+        </div>
+        
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 </div>

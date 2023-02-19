@@ -2,20 +2,23 @@
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-ivy-7rzbuq)
 
-CONACT MAP : relay race : must be in order : insert, update and delete
+1. CONACT MAP : like a relay race : order matters
 
-THIS NOT GOOD APPROACH when user undecided and clicks on 3 records because you have to wait until all 3 are finished
+THIS NOT GOOD APPROACH: on multiple clicks you have to wait until all 3 are finished : user switchMap instead
 todos$ = this.userSelectedAction$.pipe(
     concatMap(userId => 
-      this.http.get<ToDo[]>(`${this.todoUrl}/${user.id}`))
+      this.http.get<Suppliers[]>(`${this.url}/${wafer.id}`))
 )
 
-MERGE MAP - starts at the same time but there is no order : use when criteria doesn't change
+MERGE MAP - starts at the same time but there is no order : fastest results show up first
+so, use only when criteria doesn't change - meaning, when there are no multiple clicks
+
+
 
 FORK JOIN : parent-detail Data
 
 usersWithTodos$ = this.http.get<User[]>(this.userUrl).pipe(
-mergeMap(users => forkJoin(users.map(uer =>
+mergeMap(users => forkJoin(users.map(user =>
 this.http.get<ToDo[]>(`${this.todoUrl}/${user.id}`)
 .pipe(
 map(todos => ({
@@ -55,5 +58,3 @@ this.http.get<ToDo[]>(`${this.todoUrl}?userId=${user.id}`).pipe(
 switchMap is the Higher Order Mapping operator
 Compare this approach with FORK JOIN - all users
 This approach is concerned with only one user and their todos.
-
-More Info: https://www.youtube.com/watch?v=rQTSMbeqv7I

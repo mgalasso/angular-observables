@@ -41,7 +41,8 @@ export class CarsComponent {
     )
   );
 
-  // Or you can show Models by Make using both combine latest and filter
+  // shape on action pattern
+  // you can show Models by Make using both combine latest and filter
   // this way you at least have the full list showing before the user selects a Make
   filteredUsingCombineLatest$ = combineLatest([
     this.vehicles$,
