@@ -9,4 +9,8 @@ import { ZipService } from './zip.service';
   imports: [CommonModule],
   providers: [ZipService],
 })
-export class ZipComponent {}
+export class ZipComponent {
+
+  constructor(private zs: ZipService){}
+  makeModelCost$ = this.zs.zipped$
+}

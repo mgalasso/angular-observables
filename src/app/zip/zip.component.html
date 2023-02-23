@@ -1,0 +1,5 @@
+<div *ngIf="makeModelCost$ | async as zipped">
+  <div *ngFor='let zip of zipped'>
+    {{ zip | json }}
+  </div>
+</div>
