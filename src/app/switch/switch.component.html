@@ -1,0 +1,13 @@
+<div>Select User: </div>
+<div *ngIf="users$ | async as users">
+  <div *ngFor="let u of users">
+    <div class=user (click)=selectId.next(u.id)>{{u.name}}</div>
+  </div>
+</div>
+
+<br/>
+
+<div *ngIf="selectedUser$ | async as user">
+  <div>User Details: </div>
+  <div>{{user | json}}</div>
+</div>

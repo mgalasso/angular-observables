@@ -14,6 +14,7 @@ import { CarsComponent } from './cars/cars.component';
 import { MapComponent } from './map/map.component';
 import { SelectThreeComponent } from './select/select-three/select-three.component';
 import { ZipComponent } from './zip/zip.component';
+import { SwitchComponent } from './switch/switch.component';
 
 
 export const routes: Routes = [
@@ -32,6 +33,7 @@ export const routes: Routes = [
   { path: 'forkjoin', component: ParentchildComponent },
   { path: 'combinelatest', component: CarsComponent },
   { path: 'zip', component: ZipComponent },
+  { path: 'switch', component: SwitchComponent },
 ];
 
 @NgModule({
