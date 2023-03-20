@@ -23,7 +23,7 @@ export class SwitchComponent {
     this.users$ = ds.users$;
     this.selectedUser$ = this.selectId.pipe(
       distinctUntilChanged(),
-      switchMap((id) => this.ds.getUser(id)) // present a completely different observable
+      switchMap((id) => this.ds.getUser(id)) // switch to a completely different observable
     );
   }
 }
